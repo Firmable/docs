@@ -1,0 +1,47 @@
+---
+title: 'Enrich Company'
+api: 'GET /company'
+authMethod: "bearer"
+---
+
+## Authorizations
+---
+
+Authorization `string` `header` `required`
+
+Bearer authentication header of the form `Bearer <token>`, where `<token>` is your auth token.
+
+
+## Query Parameters
+---
+
+<ParamField query="id" type="string">
+  ID of the company
+</ParamField>
+
+<ParamField query="fqdn" type="string">
+  FQDN of the company
+</ParamField>
+
+<ParamField query="website" type="string">
+  Website of the company
+</ParamField>
+
+<ParamField query="ln_slug" type="string">
+  Linkedin slug of the company
+</ParamField>
+
+<ParamField query="ln_url" type="string">
+  Linkedin URL of the company
+</ParamField>
+
+<ParamField query="abn" type="string">
+  Australian Business Number of the company
+</ParamField>
+
+## Response
+---
+<ResponseField name="Response" type="string">
+  A response field example
+</ResponseField>
+

@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://api-git-task-api-enrichment-improvements-internal-apps.vercel.app"
     }
   ],
   "security": [
@@ -19,30 +19,66 @@
     }
   ],
   "paths": {
-    "/plants": {
+    "/company": {
       "get": {
-        "description": "Returns all plants from the system that the user has access to",
+        "description": "Returns people information",
         "parameters": [
           {
-            "name": "limit",
+            "name": "id",
             "in": "query",
-            "description": "The maximum number of results to return",
+            "description": "ID of the company",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
+            }
+          },
+          {
+            "name": "abn",
+            "in": "query",
+            "description": "ABN of the company",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fqdn",
+            "in": "query",
+            "description": "FQDN of the company",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "website",
+            "in": "query",
+            "description": "Website of the company",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ln_slug",
+            "in": "query",
+            "description": "LinkedIn slug of the company",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ln_url",
+            "in": "query",
+            "description": "LinkedIn URL of the company",
+            "schema": {
+              "type": "string"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Plant response",
+            "description": "Company response",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
-                  }
+                  "$ref": "#/components/schemas/Company"
                 }
               }
             }
@@ -58,23 +94,56 @@
             }
           }
         }
-      },
-      "post": {
-        "description": "Creates a new plant in the store",
-        "requestBody": {
-          "description": "Plant to add to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
+      }
+    },
+    "/people": {
+      "get": {
+        "description": "Returns people information",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The id of the person",
+            "schema": {
+              "type": "string"
             }
           },
-          "required": true
-        },
+          {
+            "name": "ln_slug",
+            "in": "query",
+            "description": "The linkedin slug of the person",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ln_url",
+            "in": "query",
+            "description": "The linkedin url of the person",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "work_email",
+            "in": "query",
+            "description": "The work email of the person",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "personal_email",
+            "in": "query",
+            "description": "The personal email of the person",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "plant response",
+            "description": "Plant response",
             "content": {
               "application/json": {
                 "schema": {
@@ -84,40 +153,7 @@
             }
           },
           "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
-          },
-          "400": {
-            "description": "unexpected error",
+            "description": "Unexpected error",
             "content": {
               "application/json": {
                 "schema": {
@@ -132,10 +168,207 @@
   },
   "components": {
     "schemas": {
+      "Company": {
+        "type": "object",
+        "properties": {
+          "org_registers": {
+            "type": "object",
+            "additionalProperties": true,
+            "example": {
+              "vc": "VCs & Investors"
+            }
+          },
+          "linkedin_url": {
+            "type": "string",
+            "example": "https://www.linkedin.com/company/1234567890"
+          },
+          "name": {
+            "type": "string",
+            "example": "Company Name"
+          },
+          "locations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": ["Sydney", "Melbourne"]
+          },
+          "industries": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": ["Finance", "Tech"]
+          },
+          "revenue": {
+            "type": "string",
+            "example": ">$1B+"
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": ["Finance", "Tech"]
+          },
+          "id": {
+            "type": "string",
+            "example": "f0000067890"
+          },
+          "website": {
+            "type": "string",
+            "example": "https://www.example.com"
+          },
+          "industry_codes": {
+            "type": "object",
+            "properties": {
+              "abn": {
+                "type": "string",
+                "nullable": true
+              },
+              "acn": {
+                "type": "string",
+                "nullable": true
+              },
+              "sic": {
+                "type": "string",
+                "nullable": true
+              },
+              "duns": {
+                "type": "string",
+                "nullable": true
+              },
+              "naics": {
+                "type": "string",
+                "nullable": true
+              },
+              "anzsic": {
+                "type": "string",
+                "nullable": true
+              }
+            },
+            "example": {
+              "abn": "1234567890",
+              "acn": "1234567890",
+              "sic": "1234567890",
+              "duns": "1234567890",
+              "naics": "1234567890",
+              "anzsic": "1234567890"
+            }
+          },
+          "social_media": {
+            "type": "object",
+            "properties": {
+              "twitter": {
+                "type": "string",
+                "nullable": true
+              },
+              "youtube": {
+                "type": "string",
+                "nullable": true
+              },
+              "facebook": {
+                "type": "string",
+                "nullable": true
+              },
+              "linkedin": {
+                "type": "string",
+                "nullable": true
+              },
+              "instagram": {
+                "type": "string",
+                "nullable": true
+              }
+            },
+            "example": {
+              "twitter": "commbank",
+              "youtube": null,
+              "facebook": "commonwealthbank",
+              "linkedin": "commonwealthbank",
+              "instagram": "commbank"
+            }
+          },
+          "au_employee_count": {
+            "type": "integer",
+            "nullable": true,
+            "example": 1000
+          },
+          "hq_location": {
+            "type": "string",
+            "nullable": true,
+            "example": "Wallan"
+          },
+          "abn_operation_status": {
+            "type": "string",
+            "enum": ["active", "inactive"],
+            "example": "active"
+          },
+          "phones": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": ["0450 600 0000"]
+          },
+          "tagline": {
+            "type": "string",
+            "example": "We are a team of 1000 people"
+          },
+          "emails": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": ["email@example.com"]
+          },
+          "states": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": ["NSW", "VIC"]
+          },
+          "hq_country": {
+            "type": "string",
+            "example": "Australia"
+          },
+          "year_founded": {
+            "type": "integer",
+            "example": 2000
+          },
+          "company_size": {
+            "type": "string",
+            "example": "1000+"
+          },
+          "company_type": {
+            "type": "string",
+            "example": "Public company"
+          },
+          "description": {
+            "type": "string",
+            "example": "CommBank offers personal banking, business solutions, institutional banking, company information, and more"
+          },
+          "nextGen": {
+            "type": "object",
+            "properties": {
+              "technographics": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "Software Development": ["PostgreSQL", "Java"],
+                  "Finance & Accounting": ["Visa", "Pace"]
+                }
+              }
+            }
+          }
+        }
+      },
       "Plant": {
-        "required": [
-          "name"
-        ],
         "type": "object",
         "properties": {
           "name": {
@@ -154,9 +387,7 @@
             "$ref": "#/components/schemas/Plant"
           },
           {
-            "required": [
-              "id"
-            ],
+            "required": ["id"],
             "type": "object",
             "properties": {
               "id": {
@@ -169,10 +400,7 @@
         ]
       },
       "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
+        "required": ["error", "message"],
         "type": "object",
         "properties": {
           "error": {
