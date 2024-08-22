@@ -147,7 +147,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Plant"
+                  "$ref": "#/components/schemas/People"
                 }
               }
             }
@@ -224,36 +224,34 @@
             "properties": {
               "abn": {
                 "type": "string",
-                "nullable": true
+                "nullable": true,
+                "example": "1234567890"
               },
               "acn": {
                 "type": "string",
-                "nullable": true
+                "nullable": true,
+                "example": "1234567890"
               },
               "sic": {
                 "type": "string",
-                "nullable": true
+                "nullable": true,
+                "example": "1234567890"
               },
               "duns": {
                 "type": "string",
-                "nullable": true
+                "nullable": true,
+                "example": "1234567890"
               },
               "naics": {
                 "type": "string",
-                "nullable": true
+                "nullable": true,
+                "example": "1234567890"
               },
               "anzsic": {
                 "type": "string",
-                "nullable": true
+                "nullable": true,
+                "example": "1234567890"
               }
-            },
-            "example": {
-              "abn": "1234567890",
-              "acn": "1234567890",
-              "sic": "1234567890",
-              "duns": "1234567890",
-              "naics": "1234567890",
-              "anzsic": "1234567890"
             }
           },
           "social_media": {
@@ -261,31 +259,29 @@
             "properties": {
               "twitter": {
                 "type": "string",
-                "nullable": true
+                "nullable": true,
+                "example": "username"
               },
               "youtube": {
                 "type": "string",
-                "nullable": true
+                "nullable": true,
+                "example": "username"
               },
               "facebook": {
                 "type": "string",
-                "nullable": true
+                "nullable": true,
+                "example": "username"
               },
               "linkedin": {
                 "type": "string",
-                "nullable": true
+                "nullable": true,
+                "example": "username"
               },
               "instagram": {
                 "type": "string",
-                "nullable": true
+                "nullable": true,
+                "example": "username"
               }
-            },
-            "example": {
-              "twitter": "commbank",
-              "youtube": null,
-              "facebook": "commonwealthbank",
-              "linkedin": "commonwealthbank",
-              "instagram": "commbank"
             }
           },
           "au_employee_count": {
@@ -362,6 +358,296 @@
                 "example": {
                   "Software Development": ["PostgreSQL", "Java"],
                   "Finance & Accounting": ["Visa", "Pace"]
+                }
+              }
+            }
+          }
+        }
+      },
+      "People": {
+        "type": "object",
+        "properties": {
+          "linkedin": {
+            "type": "string",
+            "example": "https://www.linkedin.com/in/person_slug"
+          },
+          "name": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "is_firmable_verified_company": {
+            "type": "boolean",
+            "example": true
+          },
+          "month_joined": {
+            "type": "number",
+            "example": 2
+          },
+          "seniority": {
+            "type": "string",
+            "example": "C-Suite / Partner"
+          },
+          "headline": {
+            "type": "string",
+            "example": "Unlimited C-Suite Partner"
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "nullable": true
+            },
+            "example": ["Finance", "Tech"]
+          },
+          "id": {
+            "type": "string",
+            "example": "fp000000067890"
+          },
+          "middle_name": {
+            "type": "string",
+            "nullable": true,
+            "example": "M"
+          },
+          "department": {
+            "type": "string",
+            "example": "Marketing"
+          },
+          "location": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": ["Sydney", "Melbourne"]
+          },
+          "social_media": {
+            "type": "object",
+            "properties": {
+              "github": {
+                "type": "string",
+                "nullable": true,
+                "example": "https://github.com/username"
+              },
+              "twitter": {
+                "type": "object",
+                "properties": {
+                  "stars": {
+                    "type": "integer",
+                    "nullable": true,
+                    "example": 100
+                  },
+                  "handle": {
+                    "type": "string",
+                    "nullable": true,
+                    "example": "username"
+                  },
+                  "followers": {
+                    "type": "integer",
+                    "nullable": true,
+                    "example": 100
+                  },
+                  "connections": {
+                    "type": "integer",
+                    "nullable": true,
+                    "example": 100
+                  }
+                },
+                "nullable": true
+              }
+            }
+          },
+          "current_company": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "f0000067890"
+              },
+              "logo": {
+                "type": "boolean",
+                "example": true
+              },
+              "name": {
+                "type": "string",
+                "example": "Company Name"
+              },
+              "size": {
+                "type": "string",
+                "example": "11 - 50"
+              },
+              "website": {
+                "type": "string",
+                "example": "https://www.example.com"
+              },
+              "industry": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": ["Finance", "Tech"]
+              },
+              "linkedin": {
+                "type": "string",
+                "example": "person_slug"
+              },
+              "main_phones": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "type": "string"
+                },
+                "example": ["0450 600 0000"]
+              },
+              "other_phones": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "type": "string"
+                },
+                "example": ["0450 600 0000"]
+              },
+              "mobile_phones": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "type": "string"
+                },
+                "example": ["0450 600 0000"]
+              }
+            }
+          },
+          "time_in_current_role": {
+            "type": "string",
+            "example": "Jan '23 - Present"
+          },
+          "last_name": {
+            "type": "string",
+            "example": "Doe"
+          },
+          "phones": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "example": "0450 600 0000"
+                },
+                "is_dnd": {
+                  "type": "boolean",
+                  "example": false
+                }
+              }
+            }
+          },
+          "emails": {
+            "type": "object",
+            "properties": {
+              "personal": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string",
+                      "example": "email@firmable.com"
+                    }
+                  }
+                }
+              },
+              "work": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string",
+                      "example": "email@gmail.com"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "first_name": {
+            "type": "string",
+            "example": "John"
+          },
+          "skills": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            },
+            "example": ["Finance", "Tech"]
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "example": "I am a finance manager at a bank"
+          },
+          "position": {
+            "type": "string",
+            "nullable": true,
+            "example": "Chief Marketing Officer"
+          },
+          "year_joined": {
+            "type": "integer",
+            "nullable": true,
+            "example": 2002
+          },
+          "secondary_position": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "company_id": {
+                  "type": "string",
+                  "example": "f000000120808"
+                },
+                "company_name": {
+                  "type": "string",
+                  "example": "Firmable"
+                },
+                "company_size": {
+                  "type": "string",
+                  "example": "1 - 100"
+                },
+                "company_website": {
+                  "type": "string",
+                  "example": "https://firmable.com"
+                },
+                "company_linkedin": {
+                  "type": "string",
+                  "example": "company-slug"
+                },
+                "company_industry": {
+                  "type": "string",
+                  "example": "Financial Services"
+                },
+                "cleaned_position": {
+                  "type": "string",
+                  "example": "Marketing Principal"
+                },
+                "month_joined": {
+                  "type": "number",
+                  "example": 11
+                },
+                "year_joined": {
+                  "type": "number",
+                  "example": "2022"
+                },
+                "time_in_current_role": {
+                  "type": "string",
+                  "example": "Nov '22 - Present"
+                },
+                "seniority": {
+                  "type": "string",
+                  "example": "Other"
+                },
+                "department": {
+                  "type": "string",
+                  "example": "Marketing"
                 }
               }
             }
