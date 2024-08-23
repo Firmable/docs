@@ -2,8 +2,8 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Firmable",
   "logo": {
-    "dark": "/logo/firmable-dark.svg",
-    "light": "/logo/firmable-light.svg"
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
