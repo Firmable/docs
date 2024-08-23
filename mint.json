@@ -11,9 +11,6 @@
     "dark": "#183453",
     "light": "#EFF4FB"
   },
-  "modeToggle": {
-    "default": "dark"
-  },
   "topbarLinks": [
     {
       "name": "Support",
