@@ -171,6 +171,10 @@
       "Company": {
         "type": "object",
         "properties": {
+          "fqdn": {
+            "type": "string",
+            "example": "firmable.com"
+          },
           "org_registers": {
             "type": "object",
             "additionalProperties": true,
