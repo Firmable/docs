@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "https://api-staging.firmable.com"
+      "url": "https://api.firmable.com"
     }
   ],
   "security": [
