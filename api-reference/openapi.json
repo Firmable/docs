@@ -191,22 +191,64 @@
             "description": "The fully qualified domain name of the company's website.",
             "example": "firmable.com"
           },
-          "org_registers": {
-            "type": "object",
-            "additionalProperties": true,
-            "example": {
-              "vc": "VCs & Investors"
-            }
-          },
-          "linkedin_url": {
+          "description": {
             "type": "string",
-            "example": "https://www.linkedin.com/company/1234567890"
+            "description": "A detailed description of the company.",
+            "example": "CommBank offers personal banking, business solutions, institutional banking, company information, and more"
+          },
+          "tagline": {
+            "type": "string",
+            "description": "A brief tagline or slogan for the company.",
+            "example": "We are a team of 1000 people"
+          },
+          "linkedin": {
+            "type": "string",
+            "description": "The company's LinkedIn handle.",
+            "example": "commbank"
+          },
+          "au_employee_count": {
+            "type": "integer",
+            "description": "The number of employees in Australia.",
+            "nullable": true,
+            "example": 1000
+          },
+          "year_founded": {
+            "type": "integer",
+            "description": "The year the company was founded.",
+            "example": 2000
+          },
+          "hq_location": {
+            "type": "string",
+            "description": "The headquarters location of the company.",
+            "nullable": true,
+            "example": "Wallan"
+          },
+          "hq_country": {
+            "type": "string",
+            "description": "The country of the company's headquarters.",
+            "example": "Australia"
+          },
+          "company_size": {
+            "type": "string",
+            "description": "The size category of the company.",
+            "example": "1000+"
+          },
+          "company_type": {
+            "type": "string",
+            "description": "The type of company (e.g., Private, Public).",
+            "example": "Public company"
+          },
+          "abn_operation_status": {
+            "type": "string",
+            "description": "The operational status of the company's ABN.",
+            "example": "active"
           },
           "locations": {
             "type": "array",
             "items": {
               "type": "string"
             },
+            "description": "The locations associated with the company.",
             "example": ["Sydney", "Melbourne"]
           },
           "industries": {
@@ -214,149 +256,142 @@
             "items": {
               "type": "string"
             },
+            "description": "The industries associated with the company.",
             "example": ["Finance", "Tech"]
           },
           "revenue": {
             "type": "string",
+            "description": "The company's revenue, if available.",
             "example": ">$1B+"
-          },
-          "keywords": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "example": ["Finance", "Tech"]
-          },
-          "industry_codes": {
-            "type": "object",
-            "properties": {
-              "abn": {
-                "type": "string",
-                "nullable": true,
-                "example": "1234567890"
-              },
-              "acn": {
-                "type": "string",
-                "nullable": true,
-                "example": "1234567890"
-              },
-              "sic": {
-                "type": "string",
-                "nullable": true,
-                "example": "1234567890"
-              },
-              "duns": {
-                "type": "string",
-                "nullable": true,
-                "example": "1234567890"
-              },
-              "naics": {
-                "type": "string",
-                "nullable": true,
-                "example": "1234567890"
-              },
-              "anzsic": {
-                "type": "string",
-                "nullable": true,
-                "example": "1234567890"
-              }
-            }
-          },
-          "social_media": {
-            "type": "object",
-            "properties": {
-              "twitter": {
-                "type": "string",
-                "nullable": true,
-                "example": "username"
-              },
-              "youtube": {
-                "type": "string",
-                "nullable": true,
-                "example": "username"
-              },
-              "facebook": {
-                "type": "string",
-                "nullable": true,
-                "example": "username"
-              },
-              "linkedin": {
-                "type": "string",
-                "nullable": true,
-                "example": "username"
-              },
-              "instagram": {
-                "type": "string",
-                "nullable": true,
-                "example": "username"
-              }
-            }
-          },
-          "au_employee_count": {
-            "type": "integer",
-            "nullable": true,
-            "example": 1000
-          },
-          "hq_location": {
-            "type": "string",
-            "nullable": true,
-            "example": "Wallan"
-          },
-          "abn_operation_status": {
-            "type": "string",
-            "enum": ["active", "inactive"],
-            "example": "active"
           },
           "phones": {
             "type": "array",
             "items": {
               "type": "string"
             },
+            "description": "List of phone numbers associated with the company.",
             "example": ["0450 600 0000"]
-          },
-          "tagline": {
-            "type": "string",
-            "example": "We are a team of 1000 people"
           },
           "emails": {
             "type": "array",
             "items": {
               "type": "string"
             },
+            "description": "List of email addresses associated with the company.",
             "example": ["email@example.com"]
           },
+          "social_media": {
+            "type": "object",
+            "description": "Social media profiles of the company.",
+            "properties": {
+              "twitter": {
+                "type": "string",
+                "nullable": true,
+                "example": "username",
+                "description": "Twitter handle of the company."
+              },
+              "youtube": {
+                "type": "string",
+                "nullable": true,
+                "example": "username",
+                "description": "Youtube channel of the company."
+              },
+              "facebook": {
+                "type": "string",
+                "nullable": true,
+                "example": "username",
+                "description": "Facebook page of the company."
+              },
+              "linkedin": {
+                "type": "string",
+                "nullable": true,
+                "example": "username",
+                "description": "LinkedIn profile of the company."
+              },
+              "instagram": {
+                "type": "string",
+                "nullable": true,
+                "example": "username",
+                "description": "Instagram handle of the company."
+              }
+            }
+          },
+          "industry_codes": {
+            "type": "object",
+            "description": "Various industry classification codes for the company.",
+            "properties": {
+              "abn": {
+                "type": "string",
+                "nullable": true,
+                "example": "1234567890",
+                "description": "Australian Business Number."
+              },
+              "acn": {
+                "type": "string",
+                "nullable": true,
+                "example": "1234567890",
+                "description": "Australian Company Number."
+              },
+              "sic": {
+                "type": "string",
+                "nullable": true,
+                "example": "1234567890",
+                "description": "Standard Industrial Classification code."
+              },
+              "duns": {
+                "type": "string",
+                "nullable": true,
+                "example": "1234567890",
+                "description": "Data Universal Numbering System number."
+              },
+              "naics": {
+                "type": "string",
+                "nullable": true,
+                "example": "1234567890",
+                "description": "North American Industry Classification System code."
+              },
+              "anzsic": {
+                "type": "string",
+                "nullable": true,
+                "example": "1234567890",
+                "description": "Australian National Industry Classification System code."
+              }
+            }
+          },
+
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Keywords associated with the company.",
+            "example": ["Finance", "Tech"]
+          },
+          "org_registers": {
+            "type": "object",
+            "description": "Information about organizational registers.",
+            "additionalProperties": true,
+            "example": {
+              "vc": "VCs & Investors"
+            }
+          },
+
           "states": {
             "type": "array",
+            "description": "Additional state information about the company.",
             "items": {
               "type": "string"
             },
             "example": ["NSW", "VIC"]
           },
-          "hq_country": {
-            "type": "string",
-            "example": "Australia"
-          },
-          "year_founded": {
-            "type": "integer",
-            "example": 2000
-          },
-          "company_size": {
-            "type": "string",
-            "example": "1000+"
-          },
-          "company_type": {
-            "type": "string",
-            "example": "Public company"
-          },
-          "description": {
-            "type": "string",
-            "example": "CommBank offers personal banking, business solutions, institutional banking, company information, and more"
-          },
+
           "nextGen": {
             "type": "object",
+            "description": "Next-generation data about the company.",
             "properties": {
               "technographics": {
                 "type": "object",
+                "description": "Technographics profile of the company.",
                 "additionalProperties": {
                   "type": "array",
                   "items": {
@@ -366,6 +401,372 @@
                 "example": {
                   "Software Development": ["PostgreSQL", "Java"],
                   "Finance & Accounting": ["Visa", "Pace"]
+                }
+              },
+              "website": {
+                "type": "string",
+                "description": "The company's website URL.",
+                "example": "https://www.example.com"
+              },
+              "social_media": {
+                "type": "object",
+                "description": "Detailed social media information.",
+                "properties": {
+                  "youtube": {
+                    "type": "object",
+                    "properties": {
+                      "profile_name": {
+                        "type": "string",
+                        "example": "profile_name"
+                      },
+                      "handle": {
+                        "type": "string",
+                        "example": "handle"
+                      },
+                      "followers": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "verified": {
+                        "type": "string",
+                        "example": true,
+                        "nullable": true
+                      },
+                      "videos": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "likes": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "views": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "subscribers": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "following": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "joined": {
+                        "type": "string",
+                        "example": "2021-01-01",
+                        "nullable": true
+                      }
+                    },
+                    "description": "YouTube channel details."
+                  },
+                  "instagram": {
+                    "type": "object",
+                    "properties": {
+                      "profile_name": {
+                        "type": "string",
+                        "example": "profile_name"
+                      },
+                      "handle": {
+                        "type": "string",
+                        "example": "handle"
+                      },
+                      "followers": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "verified": {
+                        "type": "string",
+                        "example": true,
+                        "nullable": true
+                      },
+                      "videos": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "likes": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "views": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "subscribers": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "following": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "joined": {
+                        "type": "string",
+                        "example": "2021-01-01",
+                        "nullable": true
+                      }
+                    },
+                    "description": "YouTube channel details."
+                  },
+                  "linkedin": {
+                    "type": "object",
+                    "properties": {
+                      "profile_name": {
+                        "type": "string",
+                        "example": "profile_name"
+                      },
+                      "handle": {
+                        "type": "string",
+                        "example": "handle"
+                      },
+                      "followers": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "verified": {
+                        "type": "string",
+                        "example": true,
+                        "nullable": true
+                      },
+                      "videos": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "likes": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "views": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "subscribers": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "following": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "joined": {
+                        "type": "string",
+                        "example": "2021-01-01",
+                        "nullable": true
+                      }
+                    },
+                    "description": "YouTube channel details."
+                  },
+                  "facebook": {
+                    "type": "object",
+                    "properties": {
+                      "profile_name": {
+                        "type": "string",
+                        "example": "profile_name"
+                      },
+                      "handle": {
+                        "type": "string",
+                        "example": "handle"
+                      },
+                      "followers": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "verified": {
+                        "type": "string",
+                        "example": true,
+                        "nullable": true
+                      },
+                      "videos": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "likes": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "views": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "subscribers": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "following": {
+                        "type": "integer",
+                        "example": 100,
+                        "nullable": true
+                      },
+                      "joined": {
+                        "type": "string",
+                        "example": "2021-01-01",
+                        "nullable": true
+                      }
+                    },
+                    "description": "YouTube channel details."
+                  }
+                }
+              },
+              "reviews_rating": {
+                "type": "object",
+                "nullable": true,
+                "description": "Company reviews and ratings.",
+                "properties": {
+                  "ceo_approval": {
+                    "type": "string",
+                    "description": "CEO approval rating.",
+                    "example": "4.5"
+                  },
+                  "total_reviews": {
+                    "type": "integer",
+                    "description": "Total number of reviews.",
+                    "example": 100
+                  },
+                  "rating": {
+                    "type": "object",
+                    "description": "Detailed ratings across various categories.",
+                    "properties": {
+                      "ceo_approval_rating": {
+                        "type": "string",
+                        "example": "4.5"
+                      },
+                      "career_opportunities_rating": {
+                        "type": "string",
+                        "example": "4.5"
+                      },
+                      "compensation_and_benefits_rating": {
+                        "type": "string",
+                        "example": "4.5"
+                      },
+                      "culture_and_values_rating": {
+                        "type": "string",
+                        "example": "4.5"
+                      },
+                      "diversity_and_inclusion_rating": {
+                        "type": "string",
+                        "example": "4.5"
+                      },
+                      "senior_management_rating": {
+                        "type": "string",
+                        "example": "4.5"
+                      },
+                      "work_life_balance_rating": {
+                        "type": "string",
+                        "example": "4.5"
+                      }
+                    }
+                  },
+                  "overall_rating": {
+                    "type": "string",
+                    "description": "Overall company rating.",
+                    "example": "4.5",
+                    "nullable": true
+                  },
+                  "employee_rating_id": {
+                    "type": "string",
+                    "description": "Employee rating identifier.",
+                    "example": "fp000000067890",
+                    "nullable": true
+                  },
+                  "recommend_to_friend": {
+                    "type": "number",
+                    "description": "Percentage of employees who would recommend the company.",
+                    "example": 232,
+                    "nullable": true
+                  },
+                  "url": {
+                    "type": "string",
+                    "description": "URL to the reviews.",
+                    "example": 4.5
+                  }
+                }
+              },
+              "id": {
+                "type": "string",
+                "description": "The Firmable ID of the company (repeated).",
+                "example": "f0000067890"
+              },
+              "web_traffic": {
+                "type": "object",
+                "description": "Web traffic data.",
+                "properties": {
+                  "summary": {
+                    "type": "object",
+                    "properties": {
+                      "avg_visit_duration": {
+                        "type": "string"
+                      },
+                      "total_web_visitors": {
+                        "type": "number"
+                      },
+                      "bounce_rate": {
+                        "type": "number"
+                      },
+                      "pages_per_visit": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "traffic_share": {
+                    "type": "object",
+                    "properties": {
+                      "countries": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "number"
+                        }
+                      },
+                      "organic": {
+                        "type": "number"
+                      },
+                      "paid": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "marketing_channels_distribution": {
+                    "type": "object",
+                    "properties": {
+                      "Direct": {
+                        "type": "number"
+                      },
+                      "Referrals": {
+                        "type": "number"
+                      },
+                      "Search": {
+                        "type": "number"
+                      },
+                      "Social": {
+                        "type": "number"
+                      },
+                      "Mail": {
+                        "type": "number"
+                      }
+                    }
+                  }
                 }
               }
             }
