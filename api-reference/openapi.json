@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "https://api-git-task-api-enrichment-improvements-internal-apps.vercel.app"
+      "url": "https://api-staging.firmable.com"
     }
   ],
   "security": [
@@ -26,31 +26,7 @@
           {
             "name": "id",
             "in": "query",
-            "description": "ID of the company",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "abn",
-            "in": "query",
-            "description": "ABN of the company",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "fqdn",
-            "in": "query",
-            "description": "FQDN of the company",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "website",
-            "in": "query",
-            "description": "Website of the company",
+            "description": "The Firmable ID of the company (example: f000000117274)",
             "schema": {
               "type": "string"
             }
@@ -58,7 +34,7 @@
           {
             "name": "ln_slug",
             "in": "query",
-            "description": "LinkedIn slug of the company",
+            "description": "The LinkedIn slug of the company (example: smec)",
             "schema": {
               "type": "string"
             }
@@ -66,7 +42,31 @@
           {
             "name": "ln_url",
             "in": "query",
-            "description": "LinkedIn URL of the company",
+            "description": "LinkedIn URL of the company (example: https://www.linkedin.com/company/smec/)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fqdn",
+            "in": "query",
+            "description": "FQDN of the company (example: smec.com)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "abn",
+            "in": "query",
+            "description": "ABN of the company (example: 47065475149)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "website",
+            "in": "query",
+            "description": "Website of the company (example: https://www.smec.com)",
             "schema": {
               "type": "string"
             }
@@ -171,8 +171,24 @@
       "Company": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "description": "The Firmable ID of the company.",
+            "example": "f0000067890"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the company.",
+            "example": "The name of the company."
+          },
+          "website": {
+            "type": "string",
+            "description": "The company's website URL.",
+            "example": "https://www.example.com"
+          },
           "fqdn": {
             "type": "string",
+            "description": "The fully qualified domain name of the company's website.",
             "example": "firmable.com"
           },
           "org_registers": {
@@ -185,10 +201,6 @@
           "linkedin_url": {
             "type": "string",
             "example": "https://www.linkedin.com/company/1234567890"
-          },
-          "name": {
-            "type": "string",
-            "example": "Company Name"
           },
           "locations": {
             "type": "array",
@@ -214,14 +226,6 @@
               "type": "string"
             },
             "example": ["Finance", "Tech"]
-          },
-          "id": {
-            "type": "string",
-            "example": "f0000067890"
-          },
-          "website": {
-            "type": "string",
-            "example": "https://www.example.com"
           },
           "industry_codes": {
             "type": "object",

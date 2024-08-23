@@ -11,6 +11,7 @@
     "dark": "#183453"
   },
   "modeToggle": {
+    "default": "dark",
     "isHidden": true
   },
   "topbarLinks": [
