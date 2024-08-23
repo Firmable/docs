@@ -30,24 +30,21 @@
       "url": "api-reference"
     }
   ],
-  "anchors": [
-    {
-      "name": "Blog & Resources",
-      "icon": "newspaper",
-      "url": "https://firmable.com/blog/"
-    }
-  ],
   "navigation": [
     {
-      "group": "Firmable",
-      "pages": ["introduction", "firmableapikey"]
+      "group": "Overview",
+      "pages": [
+        "api-reference/overview",
+        "api-reference/new-to-firmable",
+        "api-reference/creating-api-keys",
+        "api-reference/authentication",
+        "api-reference/http-methods",
+        "api-reference/available-apis",
+        "api-reference/rate-limits"
+      ]
     },
     {
-      "group": "API Documentation",
-      "pages": ["api-reference/overview", "api-reference/authentication"]
-    },
-    {
-      "group": "Endpoint Examples",
+      "group": "Enrichment APIs",
       "pages": [
         "api-reference/endpoint/company-get",
         "api-reference/endpoint/people-get"
