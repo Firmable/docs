@@ -103,7 +103,7 @@
           {
             "name": "id",
             "in": "query",
-            "description": "The id of the person",
+            "description": "The unique identifier for a person in the Firmable system. (example: fp000000067890)",
             "schema": {
               "type": "string"
             }
@@ -111,7 +111,7 @@
           {
             "name": "ln_slug",
             "in": "query",
-            "description": "The linkedin slug of the person",
+            "description": "The LinkedIn slug of the person. (example: chathchw)",
             "schema": {
               "type": "string"
             }
@@ -119,7 +119,7 @@
           {
             "name": "ln_url",
             "in": "query",
-            "description": "The linkedin url of the person",
+            "description": "The full LinkedIn URL of the person (example: https://www.linkedin.com/in/chathchw/)",
             "schema": {
               "type": "string"
             }
@@ -127,7 +127,7 @@
           {
             "name": "work_email",
             "in": "query",
-            "description": "The work email of the person",
+            "description": "Work email of the person (example: ******@firmable.com)",
             "schema": {
               "type": "string"
             }
@@ -135,7 +135,7 @@
           {
             "name": "personal_email",
             "in": "query",
-            "description": "The personal email of the person",
+            "description": "Personal email of the person (example: ******@gmail.com)",
             "schema": {
               "type": "string"
             }
@@ -143,7 +143,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Plant response",
+            "description": "People response",
             "content": {
               "application/json": {
                 "schema": {
@@ -776,119 +776,77 @@
       "People": {
         "type": "object",
         "properties": {
-          "linkedin": {
+          "id": {
             "type": "string",
-            "example": "https://www.linkedin.com/in/person_slug"
+            "description": "The Firmable ID of the person..",
+            "example": "fp000000067890"
           },
           "name": {
             "type": "string",
+            "description": "The full name of the person.",
             "example": "John Doe"
           },
-          "is_firmable_verified_company": {
-            "type": "boolean",
-            "example": true
-          },
-          "month_joined": {
-            "type": "number",
-            "example": 2
-          },
-          "seniority": {
+          "first_name": {
             "type": "string",
-            "example": "C-Suite / Partner"
+            "description": "The first name of the person.",
+            "example": "John"
           },
-          "headline": {
+          "last_name": {
             "type": "string",
-            "example": "Unlimited C-Suite Partner"
-          },
-          "keywords": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "nullable": true
-            },
-            "example": ["Finance", "Tech"]
-          },
-          "id": {
-            "type": "string",
-            "example": "fp000000067890"
+            "description": "The last name of the person.",
+            "example": "Doe"
           },
           "middle_name": {
             "type": "string",
             "nullable": true,
+            "description": "The person's middle name (if available).",
             "example": "M"
           },
-          "department": {
+          "headline": {
             "type": "string",
-            "example": "Marketing"
+            "example": "Unlimited C-Suite Partner",
+            "description": "A brief professional headline."
           },
-          "location": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "example": ["Sydney", "Melbourne"]
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "description": "A detailed description of the person.",
+            "example": "I am a finance manager at a bank"
           },
-          "social_media": {
-            "type": "object",
-            "properties": {
-              "github": {
-                "type": "string",
-                "nullable": true,
-                "example": "https://github.com/username"
-              },
-              "twitter": {
-                "type": "object",
-                "properties": {
-                  "stars": {
-                    "type": "integer",
-                    "nullable": true,
-                    "example": 100
-                  },
-                  "handle": {
-                    "type": "string",
-                    "nullable": true,
-                    "example": "username"
-                  },
-                  "followers": {
-                    "type": "integer",
-                    "nullable": true,
-                    "example": 100
-                  },
-                  "connections": {
-                    "type": "integer",
-                    "nullable": true,
-                    "example": 100
-                  }
-                },
-                "nullable": true
-              }
-            }
+
+          "position": {
+            "type": "string",
+            "nullable": true,
+            "example": "Chief Marketing Officer",
+            "description": "The person's current job position."
           },
           "current_company": {
             "type": "object",
+            "description": "Details about the person's current company.",
             "properties": {
               "id": {
                 "type": "string",
+                "description": "The company's Firmable ID..",
                 "example": "f0000067890"
-              },
-              "logo": {
-                "type": "boolean",
-                "example": true
               },
               "name": {
                 "type": "string",
-                "example": "Company Name"
+                "example": "Company Name",
+                "description": "The company's name."
               },
               "size": {
                 "type": "string",
-                "example": "11 - 50"
+                "example": "11 - 50",
+                "description": "The size category of the company."
               },
               "website": {
                 "type": "string",
-                "example": "https://www.example.com"
+                "example": "https://www.example.com",
+                "description": "The company's website URL."
               },
               "industry": {
                 "type": "array",
+                "description": "The industries the company operates in.",
                 "items": {
                   "type": "string"
                 },
@@ -896,10 +854,12 @@
               },
               "linkedin": {
                 "type": "string",
+                "description": "The company's LinkedIn handle.",
                 "example": "person_slug"
               },
               "main_phones": {
                 "type": "array",
+                "description": "Main phone numbers for the company..",
                 "nullable": true,
                 "items": {
                   "type": "string"
@@ -908,6 +868,7 @@
               },
               "other_phones": {
                 "type": "array",
+                "description": "Other phone numbers for the company.",
                 "nullable": true,
                 "items": {
                   "type": "string"
@@ -916,6 +877,7 @@
               },
               "mobile_phones": {
                 "type": "array",
+                "description": "Mobile phone numbers for the company.",
                 "nullable": true,
                 "items": {
                   "type": "string"
@@ -926,173 +888,395 @@
           },
           "time_in_current_role": {
             "type": "string",
+            "description": "Duration in the current role.",
             "example": "Jan '23 - Present"
           },
-          "last_name": {
-            "type": "string",
-            "example": "Doe"
+          "month_joined": {
+            "type": "number",
+            "description": "The month when the person joined their current role.",
+            "example": 2
           },
-          "phones": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "string",
-                  "example": "0450 600 0000"
-                },
-                "is_dnd": {
-                  "type": "boolean",
-                  "example": false
-                }
-              }
-            }
+          "year_joined": {
+            "type": "integer",
+            "nullable": true,
+            "description": "The year when the person joined their current role.",
+            "example": 2002
           },
           "emails": {
             "type": "object",
             "properties": {
               "personal": {
                 "type": "array",
+                "description": "Details of personal email addresses.",
                 "items": {
                   "type": "object",
                   "properties": {
                     "value": {
                       "type": "string",
-                      "example": "email@firmable.com"
+                      "description": "The email address.",
+                      "example": "email@gmail.com"
+                    },
+                    "deliverability": {
+                      "type": "string",
+                      "description": "The estimated deliverability of the email.",
+                      "example": "Deliverable"
                     }
                   }
                 }
               },
               "work": {
                 "type": "array",
+                "description": "Details of work email addresses.",
                 "items": {
                   "type": "object",
                   "properties": {
                     "value": {
                       "type": "string",
+                      "description": "The email address.",
                       "example": "email@gmail.com"
+                    },
+                    "deliverability": {
+                      "type": "string",
+                      "description": "The estimated deliverability of the email.",
+                      "example": "Deliverable"
                     }
                   }
                 }
               }
             }
           },
-          "first_name": {
+          "phones": {
+            "type": "array",
+            "description": "List of phone numbers with additional details.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "description": "The phone number.",
+                  "example": "0450 600 0000"
+                },
+                "is_dnd": {
+                  "type": "boolean",
+                  "description": "Indicates if the number is on a do-not-disturb list.",
+                  "example": false
+                }
+              }
+            }
+          },
+          "linkedin": {
             "type": "string",
-            "example": "John"
+            "description": "LinkedIn profile handle.",
+            "example": "https://www.linkedin.com/in/person_slug"
+          },
+          "social_media": {
+            "type": "object",
+            "description": "Social media profiles and statistics.",
+            "properties": {
+              "linkedin": {
+                "type": "object",
+                "description": "LinkedIn profile details (if available).",
+                "properties": {
+                  "handle": {
+                    "type": "string",
+                    "nullable": true,
+                    "example": 100
+                  },
+                  "connections": {
+                    "type": "number",
+                    "nullable": true,
+                    "example": "username"
+                  },
+                  "followers": {
+                    "type": "integer",
+                    "nullable": true,
+                    "example": 100
+                  },
+                  "stars": {
+                    "type": "integer",
+                    "nullable": true,
+                    "example": 100
+                  }
+                },
+                "nullable": true
+              },
+              "github": {
+                "type": "object",
+                "description": "Github profile details (if available).",
+                "properties": {
+                  "handle": {
+                    "type": "string",
+                    "nullable": true,
+                    "example": 100
+                  },
+                  "connections": {
+                    "type": "number",
+                    "nullable": true,
+                    "example": "username"
+                  },
+                  "followers": {
+                    "type": "integer",
+                    "nullable": true,
+                    "example": 100
+                  },
+                  "stars": {
+                    "type": "integer",
+                    "nullable": true,
+                    "example": 100
+                  }
+                },
+                "nullable": true
+              },
+              "twitter": {
+                "type": "object",
+                "description": "Twitter profile details (if available).",
+                "properties": {
+                  "handle": {
+                    "type": "string",
+                    "nullable": true,
+                    "example": 100
+                  },
+                  "connections": {
+                    "type": "number",
+                    "nullable": true,
+                    "example": "username"
+                  },
+                  "followers": {
+                    "type": "integer",
+                    "nullable": true,
+                    "example": 100
+                  },
+                  "stars": {
+                    "type": "integer",
+                    "nullable": true,
+                    "example": 100
+                  }
+                },
+                "nullable": true
+              },
+              "facebook": {
+                "type": "object",
+                "description": "Facebook profile details (if available).",
+                "properties": {
+                  "handle": {
+                    "type": "string",
+                    "nullable": true,
+                    "example": 100
+                  },
+                  "connections": {
+                    "type": "number",
+                    "nullable": true,
+                    "example": "username"
+                  },
+                  "followers": {
+                    "type": "integer",
+                    "nullable": true,
+                    "example": 100
+                  },
+                  "stars": {
+                    "type": "integer",
+                    "nullable": true,
+                    "example": 100
+                  }
+                },
+                "nullable": true
+              },
+              "youtube": {
+                "type": "object",
+                "description": "Youtube profile details (if available).",
+                "properties": {
+                  "handle": {
+                    "type": "string",
+                    "nullable": true,
+                    "example": 100
+                  },
+                  "connections": {
+                    "type": "number",
+                    "nullable": true,
+                    "example": "username"
+                  },
+                  "followers": {
+                    "type": "integer",
+                    "nullable": true,
+                    "example": 100
+                  },
+                  "stars": {
+                    "type": "integer",
+                    "nullable": true,
+                    "example": 100
+                  }
+                },
+                "nullable": true
+              },
+              "pintrest": {
+                "type": "object",
+                "description": "Pinterest profile details (if available).",
+                "properties": {
+                  "handle": {
+                    "type": "string",
+                    "nullable": true,
+                    "example": 100
+                  },
+                  "connections": {
+                    "type": "number",
+                    "nullable": true,
+                    "example": "username"
+                  },
+                  "followers": {
+                    "type": "integer",
+                    "nullable": true,
+                    "example": 100
+                  },
+                  "stars": {
+                    "type": "integer",
+                    "nullable": true,
+                    "example": 100
+                  }
+                },
+                "nullable": true
+              }
+            }
+          },
+          "location": {
+            "type": "array",
+            "description": "The person's location information.",
+            "items": {
+              "type": "string"
+            },
+            "example": ["Sydney", "Melbourne"]
+          },
+          "department": {
+            "type": "string",
+            "description": "The person's department information.",
+            "example": "Marketing"
+          },
+          "seniority": {
+            "type": "string",
+            "description": "Information about the person's seniority level.",
+            "example": "C-Suite / Partner"
+          },
+          "gender": {
+            "type": "string",
+            "description": "Information about the person's gender.",
+            "example": "Female"
           },
           "skills": {
             "type": "array",
+            "description": "List of professional skills.",
             "nullable": true,
             "items": {
               "type": "string"
             },
             "example": ["Finance", "Tech"]
           },
-          "description": {
-            "type": "string",
-            "nullable": true,
-            "example": "I am a finance manager at a bank"
+          "education": {
+            "type": "object",
+            "description": "List of educational qualifications.",
+            "properties": {
+              "field": {
+                "type": "string",
+                "description": "The field of study.",
+                "example": "Computer Science"
+              },
+              "degree": {
+                "type": "string",
+                "description": "Degree obtained.",
+                "example": "University of Sydney"
+              },
+              "date_range": {
+                "type": "string",
+                "description": "Duration of the education.",
+                "example": "University of Sydney"
+              },
+              "school_name": {
+                "type": "string",
+                "description": "Name of the educational institution..",
+                "example": "University of Sydney"
+              }
+            }
           },
-          "position": {
-            "type": "string",
-            "nullable": true,
-            "example": "Chief Marketing Officer"
+
+          "keywords": {
+            "type": "array",
+            "description": "Keywords associated with the person (if available).",
+            "items": {
+              "type": "string",
+              "nullable": true
+            },
+            "example": ["Finance", "Tech"]
           },
-          "year_joined": {
-            "type": "integer",
-            "nullable": true,
-            "example": 2002
-          },
+
           "secondary_position": {
             "type": "array",
             "nullable": true,
             "items": {
               "type": "object",
+              "description": "Information about secondary positions.",
               "properties": {
                 "company_id": {
                   "type": "string",
+                  "description": "The Firmable ID of the company.",
                   "example": "f000000120808"
                 },
                 "company_name": {
                   "type": "string",
+                  "description": "The name of the company.",
                   "example": "Firmable"
                 },
                 "company_size": {
                   "type": "string",
+                  "description": "The size category of the company.",
                   "example": "1 - 100"
                 },
                 "company_website": {
                   "type": "string",
+                  "description": "The company's website URL.",
                   "example": "https://firmable.com"
                 },
                 "company_linkedin": {
                   "type": "string",
+                  "description": "The company's LinkedIn handle.",
                   "example": "company-slug"
                 },
                 "company_industry": {
                   "type": "string",
+                  "description": "The primary industry of the company.",
                   "example": "Financial Services"
                 },
                 "cleaned_position": {
                   "type": "string",
+                  "description": "A standardised version of the job title.",
                   "example": "Marketing Principal"
                 },
                 "month_joined": {
                   "type": "number",
+                  "description": "The month when the person joined this role.",
                   "example": 11
                 },
                 "year_joined": {
                   "type": "number",
+                  "description": "The year when the person joined this role.",
                   "example": "2022"
                 },
                 "time_in_current_role": {
                   "type": "string",
+                  "description": "Duration in this role.",
                   "example": "Nov '22 - Present"
                 },
                 "seniority": {
                   "type": "string",
+                  "description": "The seniority level of this position.",
                   "example": "Other"
                 },
                 "department": {
                   "type": "string",
+                  "description": "The department of this position.",
                   "example": "Marketing"
                 }
               }
             }
           }
         }
-      },
-      "Plant": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
-          },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
-          }
-        }
-      },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
-            "required": ["id"],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ]
       },
       "Error": {
         "required": ["error", "message"],
