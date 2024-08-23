@@ -1199,9 +1199,9 @@
           "keywords": {
             "type": "array",
             "description": "Keywords associated with the person (if available).",
+            "nullable": true,
             "items": {
-              "type": "string",
-              "nullable": true
+              "type": "string"
             },
             "example": ["Finance", "Tech"]
           },
