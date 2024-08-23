@@ -2,17 +2,17 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Firmable",
   "logo": {
-    "dark": "/logo/logo.svg",
-    "light": "/logo/logo.svg"
+    "dark": "/logo/firmable-dark.svg",
+    "light": "/logo/firmable-light.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
     "primary": "#183453",
-    "dark": "#183453"
+    "dark": "#183453",
+    "light": "#EFF4FB"
   },
   "modeToggle": {
-    "default": "dark",
-    "isHidden": true
+    "default": "dark"
   },
   "topbarLinks": [
     {
