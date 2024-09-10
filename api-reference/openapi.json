@@ -21,7 +21,7 @@
   "paths": {
     "/company": {
       "get": {
-        "description": "Returns people information",
+        "description": "Returns company information",
         "parameters": [
           {
             "name": "id",
